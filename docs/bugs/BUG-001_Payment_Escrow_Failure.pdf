@@ -1,0 +1,21 @@
+Bug ID: ANY-BUG-001
+Title: Wallet funds not moving to "Holding Wallet" (Escrow) upon Invoice Acceptance.
+Severity: Critical | Priority: High
+
+Environment: Android 13, App Version 2.0.4, Staging Environment.
+
+Steps to Reproduce:
+
+Log in as Customer.
+
+Accept an Invoice from a Vendor for 10,000.
+
+Navigate to Wallet Screen.
+
+Observe "Main Balance" and "Holding Wallet."
+
+Actual Result: Main Balance is deducted, but Holding Wallet remains at 0.00. Funds are "lost" in the UI.
+
+Expected Result: Main Balance should decrease by 10,000 and Holding Wallet should increase by 10,000.
+
+[Network Log]: POST /api/v1/invoice/accept - 500 Internal Server Error (Database Deadlock)
