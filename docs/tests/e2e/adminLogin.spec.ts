@@ -1,0 +1,11 @@
+import { test, expect } from '@playwright/test';
+
+test('Admin should login and see User Management tab', async ({ page }) => {
+  await page.goto('https://admin.anyworkx.africa/login');
+  await page.fill('#email', 'admin@x-agon.africa');
+  await page.fill('#password', 'SecurePassword123!');
+  await page.click('button[type="submit"]');
+
+  await expect(page).toHaveURL(/.*dashboard/);
+  await expect(page.locator('text=User Management')).toBeVisible();
+});
